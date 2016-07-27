@@ -31,7 +31,8 @@ class ShortenedUrl < ActiveRecord::Base
 
   def self.create_for_user_and_long_url!(user,long_url)
     new_short = self.random_code
-    ShortenedUrl.create!(short_url: new_short, long_url: long_url, user_id: user.id)
+    out = ShortenedUrl.create!(short_url: new_short, long_url: long_url, user_id: user.id)
+    out.short_url
   end
 
   # num_clicks is uniq!
