@@ -1,6 +1,10 @@
 class User < ActiveRecord::Base
   validates :email, uniqueness: true, presence: true
 
+  def premium?
+    self.premium
+  end
+
   has_many :submitted_urls,
     primary_key: :id,
     foreign_key: :user_id,
@@ -15,5 +19,9 @@ class User < ActiveRecord::Base
     primary_key: :id,
     foreign_key: :user_id,
     class_name: :Visit
+
+
+
+
 
 end
